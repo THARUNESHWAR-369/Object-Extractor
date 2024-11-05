@@ -1,21 +1,31 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 
 const galleryItems = [
-  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2F1.jpg?alt=media&token=90c07744-6a45-4603-85ba-56dcdc62ee0f",
-  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2F10.jpg?alt=media&token=7d818948-7ac3-4d43-8224-17aa9724667a",
-  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2F2.jpg?alt=media&token=9b23b740-c144-4cf1-9d2b-c560ce4e41c5",
-  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2F3.jpg?alt=media&token=77d512fe-ab8a-4e1a-a8f1-4ee4686c601c",
-  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2F4.jpg?alt=media&token=7a18abfa-3c5a-4cb3-b25b-6ae249daf441",
-  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2F5.jpg?alt=media&token=60505bda-04cc-4d1e-bbe7-6fb63f14e71a",
-  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2F6.jpg?alt=media&token=86a6188f-0ea0-44a8-9d4d-4a561a3da7d2",
-  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2F7.jpg?alt=media&token=35ca320d-292b-4739-b1b2-e4822484a299",
-  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2F8.jpg?alt=media&token=ea2a4181-5372-4264-86a2-74993e975758",
-  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2F9.jpg?alt=media&token=fd35b56e-30e0-4291-ad9f-885e332f2368",
+  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2Fbear.jpg?alt=media&token=1bef5853-0c27-43cd-a87c-9b0d737e74d8",
+  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2Fcar.jpg?alt=media&token=cff472b9-c7c4-4923-8a45-825b660bf03a",
+  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2Fdog1.jpg?alt=media&token=43094bcc-d435-417d-b5b1-a508d6da9ce9",
+  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2Fw1.jpg?alt=media&token=b07a479f-1be8-40ed-a07d-f33fc6dc0e16",
+  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2Fw2.jpg?alt=media&token=c71f7927-d1c6-4fcc-94ff-417576034801",
+  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2Fw3.jpg?alt=media&token=4ce03dc3-de62-4dba-9039-fb906050c201",
+  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2Flion.jpg?alt=media&token=02fe4687-7d5d-4a10-9d1b-0a70f33aeb56",
 ];
+
+const hoverItems = [
+  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2Fbrear_seg.png?alt=media&token=0de1a6cb-c3e4-4b79-ae87-e25df3cd22d1",
+  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2Fcar_seg.png?alt=media&token=c135796e-1803-4612-bf4f-82764c6805b3",
+  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2Fdog1_seg.jpg?alt=media&token=e2f11457-d332-45a4-ba33-99be6905d5a7",
+  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2Fw1_seg.png?alt=media&token=256f2878-aac6-493f-b23e-0620988f4fdf",
+  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2Fw2_seg.png?alt=media&token=8977ae61-cdb0-49d5-8749-afb05f83aefe",
+  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2Fw3.png?alt=media&token=6a2ccd50-1452-4f34-975a-c400253d5b5d",
+  "https://firebasestorage.googleapis.com/v0/b/lexicons-5.appspot.com/o/gallery%2Flion_seg.png?alt=media&token=28ccb83e-7dfe-44c0-a46c-9b5b9d3c50f7",
+]
 
 export function Gallery() {
 
+  const [onHover, setOnHover] = React.useState<boolean>(false);
 
   return (
     <div className="py-20">
@@ -30,10 +40,10 @@ export function Gallery() {
 
         <div className="grd w-full h-full columns-3 select-none">
           {galleryItems.map((item, index) => (
-            <div className='grd-itm w-full  select-none' key={index}>
+            <div onMouseEnter={()=>setOnHover(true)} onMouseLeave={()=>setOnHover(false)} className='grd-itm w-full transition-all duration-500 select-none' key={index}>
               <Image
                 key={index}
-                src={item}
+                src={onHover ? hoverItems[index] : item }
                 alt={`Gallery Item ${index + 1}`}
                 className='w-full mb-[20px]  select-none'
                 width={500}

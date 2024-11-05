@@ -33,10 +33,6 @@ export default function DashboardPage() {
   const [showMarkers, setShowMarkers] = useState<boolean>(true);
 
 
-  // Text Hooks
-  const [textSets, setTextSets] = useState<TextSetItem[]>([]);
-  const [nextId, setNextId] = useState<number>(1);
-
   // Marker Hook
   const [markers, setMarkers] = useState<MarkersInterface[]>([]);
 
@@ -94,14 +90,15 @@ export default function DashboardPage() {
 
   const handleSaveImage = async () => {
     
-    if (bgRemovedSegmentedImage) {
+    if (bgRemovedSegmentedImage && !showMarkers) {
       const imageElement = document.getElementById("bg-removed-image");
       if (imageElement) {
         const dataUrl = await htmlToImage.toPng(imageElement, {
           quality: 0.95,
+          backgroundColor: "transparent",
         });
         const link = document.createElement("a");
-        link.download = "segmented-image.jpg";
+        link.download = "segmented-image.png";
         link.href = dataUrl;
         link.click();
       }
@@ -157,7 +154,7 @@ export default function DashboardPage() {
                               fill="currentColor"
                             />
                           </svg>
-                          <p>{timer} / 25 sec</p>
+                          <p>{timer} / 40 sec</p>
                         </div>
                       )
                     }
