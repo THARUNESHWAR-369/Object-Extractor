@@ -121,7 +121,7 @@ export default function DashboardPage() {
 
         <div className="main-container z-[0] h-full pt-10 flex flex-col w-[80%] max-w-[1500px] mx-auto justify-around">
           <div className="flex justify-between gap-4 max-[800px]:flex-col max-[800px]:items-center">
-            <div className="flex flex-col w-full gap-4 img-container max-[800px]:text-center max-[800px]:justify-center">
+            <div className="flex flex-col w-full justify-center items-center gap-4 img-container max-[800px]:text-center max-[800px]:justify-center">
               <div className="flex gap-3 relative">
                 <div
                   className={`img-container max-w-full w-[500px] relative shadow-lg  max-h-auto ${selectedImage
