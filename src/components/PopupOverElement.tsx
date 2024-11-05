@@ -21,7 +21,7 @@ export default function PopupOverElement({ isOpen, setIsOpen }: { isOpen: boolea
                 </PopoverTrigger>
                 <PopoverContent className="w-[240px]">
                     <div>
-                        <p>Select an Object to Place Object Extractor</p>
+                        <p>Select an Object to Extractor</p>
                     </div>
                 </PopoverContent>
             </Popover>
